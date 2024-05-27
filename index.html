@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>俄罗斯方块</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        html{
-            height: 100%;
-        }
-        body{
-            overflow: hidden;
-            background: url(image/bg2.png) repeat-x center bottom, -webkit-linear-gradient(top, skyblue, white);
-            background-size: 20% auto;
-            padding-top: 70px;
-        }
-        table {
-            border-collapse: collapse;
-            margin: 0 auto;
-        }
-        td {
-            border: 1px solid #fff;
-            width: 25px;
-            height: 25px; 
-        }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        height: 100%;
+      }
+
+      body {
+        overflow: hidden;
+        background: url(image/bg.jpg) repeat-x center bottom,
+          -webkit-linear-gradient(top, skyblue, white);
+        background-size: 10% auto;
+        padding-top: 30px;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin: 0 auto;
+      }
+
+      td {
+        border: 1px solid #fff;
+        width: 35px;
+        height: 35px;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <script src="js/jquery-3.7.0.js"></script>
     <script src="js/Game.js"></script>
     <script>
-        var game = new Game();
+      var game = new Game();
     </script>
-</body>
+  </body>
 </html>
