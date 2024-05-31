@@ -29,4 +29,27 @@
       }
     }
   };
+  Block.prototype.check = function (row, col) {
+    // check 函数的row 和col 指的是要校验的地图的 row 和 col 的位置
+    // 能力判断方法，判断的是对应位置的方块和地图位置的方块是否有都不为0的情况，如果有返回 true，否则返回false：就代表没有重合
+    for (var i = 0; i < 4; i++) {
+      for (var j = 0; j < 4; j++) {
+        if (this.code[i][j] !== 0 && game.map.mapCode[i + row][j + col] !== 0) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+  // 方块下落，需要判断当前的方块是否能够下落
+  Block.prototype.checkDown = function () {
+    // 判断当前地图的位置和自己方块的位置是否有重合this.row + 1 指的是预判
+    // 预判断就是在下一次方块将要到达的位置是否有对应的地图方块不为0
+    if (this.check(this.row + 1, this.col)) {
+      this.row++;
+    } else {
+      // 此时就是下落到底的状态，渲染新的方块
+      game.block = new Block();
+    }
+  };
 })();
