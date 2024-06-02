@@ -38,6 +38,7 @@
     }
     $($table).appendTo("body");
   };
+
   Game.prototype.setColor = function(row, col, num) {
     // 给对应有颜色的方块添加类名
     $("tr")
@@ -46,6 +47,7 @@
       .eq(col)
       .addClass("c" + num);
   };
+
   // 清屏功能
   Game.prototype.clear = function() {
     for (var i = 0; i < this.row; i++) {
@@ -54,21 +56,26 @@
       }
     }
   };
+
   // 事件监听
   Game.prototype.bindEvent = function() {
     // 备份
     var self = this;
     $(document).keydown(function(event) {
-      if (event.keyCode == 37) {
+      if (event.keyCode === 37) {
         // 判断是否有向左移动的能力
         self.block.checkLeft();
-      } else if (event.keyCode == 39) {
+      } else if (event.keyCode === 39) {
         // 判断是否有向右移动的能力
         self.block.checkRight();
+      } else if (event.keyCode === 32) {
+        // 一键到底,空格到底
+        self.block.checkBlockEnd();
       }
       // console.log(event.keyCode);
     });
   }
+
   Game.prototype.start = function() {
     var self = this;
     this.timer = setInterval(function() {

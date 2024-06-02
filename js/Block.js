@@ -68,6 +68,14 @@
       this.col++;
     }
   };
+
+  // 一键到底，空格到底
+  Block.prototype.checkBlockEnd = function() {
+    // 使用 while 循环，如果当前的check返回的是true则代表能够下移，继续让row++
+    while (this.check(this.row + 1, this.col)) {
+      this.row++;
+    }
+  }
   // 将已经到底的方块渲染到地图中
   Block.prototype.renderMap = function() {
     for (var i = 0; i < 4; i++) {
