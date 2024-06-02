@@ -71,6 +71,9 @@
       } else if (event.keyCode === 32) {
         // 一键到底,空格到底
         self.block.checkBlockEnd();
+      } else if (event.keyCode === 38) {
+        // 键旁上用来切换方向
+        self.block.checkRot();
       }
       // console.log(event.keyCode);
     });

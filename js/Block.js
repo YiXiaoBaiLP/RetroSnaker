@@ -23,6 +23,7 @@
         // 如果 4*4 的矩阵中某一个不是0，就说明有颜色，渲染这个颜色
         var temp = this.code[i][j];
         console.log(this.code);
+        // console.log(this.code);
         if (temp !== 0) {
           game.setColor(i + this.row, j + this.col, temp);
         }
@@ -34,7 +35,8 @@
     // 能力判断方法，判断的是对应位置的方块和地图位置的方块是否有都不为0的情况，如果有返回 true，否则返回false：就代表没有重合
     for (var i = 0; i < 4; i++) {
       for (var j = 0; j < 4; j++) {
-        if (this.code[i][j] !== 0 && game.map.mapCode[i + row][j + col] !== 0) {
+        if (row === 18) return false;
+        if (this.code[i][j] !== 0 && row < 18 && game.map.mapCode[i + row][j + col] !== 0) {
           return false;
         }
       }
@@ -75,6 +77,28 @@
     while (this.check(this.row + 1, this.col)) {
       this.row++;
     }
+  }
+
+  // 方块旋转
+  Block.prototype.checkRot = function() {
+    // 备份旧的形状方向
+    var oldDir = this.dir;
+    // 改变新的
+    this.dir++;
+    // 判断如果当前dir大于了最后一种方向，回到第一种状态
+    if (this.dir > this.allDir - 1) {
+      this.dir = 0;
+    }
+    // 改变方向之后渲染新的方块方向
+    this.cdoe = fangkuai[this.type][this.dir];
+    // 渲染之后的新方块需要判断，是否有能力进行渲染
+    if (!this.check(this.row, this.col)) {
+      // 进入这里了就说明重合了，违规了，打回原形
+      this.dir = oldDir;
+      // 再次渲染方块
+      this.code = fangkuai[this.type][this.dir];
+    }
+
   }
   // 将已经到底的方块渲染到地图中
   Block.prototype.renderMap = function() {

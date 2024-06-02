@@ -1,5 +1,5 @@
-(function () {
-  window.Map = function (mapGame) {
+(function() {
+  window.Map = function() {
     // 地图矩阵
     this.mapCode = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -21,10 +21,11 @@
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [1, 2, 3, 4, 5, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      // [1, 2, 3, 4, 5, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
   };
-  Map.prototype.render = function (mapGame) {
+  Map.prototype.render = function(mapGame) {
     // 渲染地图
     for (var i = 0; i < mapGame.row; i++) {
       for (var j = 0; j < mapGame.col; j++) {
